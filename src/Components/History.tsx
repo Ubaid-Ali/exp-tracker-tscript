@@ -22,11 +22,11 @@ const History: React.FC<Props> = ({ transactions }) => {
 
 
     return (
-        <div  >
-            <div >
+        <div className={classes.root} >
+            <ul >
                 {transactions.map((arr: any) => {
                     return (
-                        <div className='history' key={arr.id}>
+                        <li className='history' key={arr.id}>
                             <p>{arr.name}</p>
                             <p>${arr.amount}</p>
                             <p>${arr.id}</p>
@@ -34,10 +34,10 @@ const History: React.FC<Props> = ({ transactions }) => {
                             <IconButton aria-label="delete">
                                 <DeleteIcon />
                             </IconButton>
-                        </div>
+                        </li>
                     )
                 })}
-            </div>
+            </ul>
         </div>
     )
 }

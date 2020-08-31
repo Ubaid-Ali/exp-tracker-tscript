@@ -27,17 +27,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// type of transactions trans[]
+// type of transactions Obj[]
 type Obj = {
   name: string,
   amount: number,
   id: number,
 }
 
+// APP Component
 function App() {
   const classes = useStyles();
 
-  const [balance, setBalance] = useState<number>(0); //current balance
+  // transaction list
   const [transactions, setTransactions] = useState<Obj[]>([])
 
   // form states onchange
@@ -45,7 +46,28 @@ function App() {
   const [usrAmount, setUsrAmount] = useState<number>(0);
   const [id, setID] = useState<number>(Math.random());
 
-  // submit event
+
+  // income expense Calculating
+  const amounts = transactions.map((obj: any) => {
+    return obj.amount
+  })
+
+  const income: number = Number(amounts
+    .filter((item: number) => item > 0)
+    .reduce((acc: number, item: number) => (acc += item), 0)
+    .toFixed(2));
+
+  const expense: number = Number((amounts
+    .filter((item: number) => item < 0)
+    .reduce((acc: number, item: number) => (acc += item), 0) *
+    -1
+  ).toFixed(2));
+
+  // Current Balance
+  const balance = income - expense;
+
+
+  // Submit event
   function submitHandler(event: any) {
     event.preventDefault()
     setTransactions(
@@ -64,13 +86,15 @@ function App() {
   }
 
 
+
+
   return (
     <div className="App">
       <Grid container spacing={1} className={classes.root} >
         <Grid item xs={12} sm={12} className={classes.grid}>
           <Header />
           <CurrentBalance balance={balance} />
-          <IncomeExpense transactions={transactions} />
+          <IncomeExpense income={income} expense={expense} />
           <History transactions={transactions} />
 
           {/* form */}
