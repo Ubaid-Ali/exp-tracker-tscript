@@ -1,43 +1,55 @@
-import React from 'react'
-import { Input } from '@material-ui/core';
-import { InputLabel } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import React, { useState } from 'react'
+// import { Input } from '@material-ui/core';
+// import { InputLabel } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles((theme) => ({
-    margin: {
-        margin: theme.spacing(1),
-    },
-    extendedIcon: {
-        marginRight: theme.spacing(1),
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     margin: {
+//         margin: theme.spacing(1),
+//     },
+//     extendedIcon: {
+//         marginRight: theme.spacing(1),
+//     },
+// }));
 
 
-const Form = () => {
-    const classes = useStyles();
+// const Form: React.FC<HTMLFontEvent> = ( {submitHandler} ) => {
+//     const classes = useStyles();
 
-    return (
-        <div className='form-component'>
-            <h2>Add New Transaction</h2>
-            <form className='form'>
-                <div>
-                    <InputLabel >Text
-                    </InputLabel>
-                    <Input type="text" />
-                </div>
+//     const [text, setText] = useState<string>('')
+//     const [usrAmount, setUsrAmount] = useState<number>(0)
 
-                <div>
-                    <InputLabel>Amount
-                    </InputLabel>
-                    <Input type='number' />
-                </div>
-                <Button variant="outlined" size="small" color="primary" className={classes.margin}>
-                    Add Transaction
-                </Button>
-            </form>
-        </div>
-    )
-}
 
-export default Form
+//     return (
+//         <div className='form-component'>
+//             <h2>Add New Transaction</h2>
+//             <form 
+//             onSubmit={submitHandler}
+//             className='form'>
+//                 <div>
+//                     <InputLabel >Text
+//                     </InputLabel>
+//                     <Input onChange={(e) => {
+//                         setText(e.target.value)
+//                     }} type="text" />
+//                 </div>
+
+//                 <div>
+//                     <InputLabel>Amount
+//                     </InputLabel>
+//                     <Input onChange={(e) => {
+//                         setUsrAmount(Number(e.target.value))
+//                     }}
+//                         type='number'
+//                     />
+//                 </div>
+//                 <Button type='submit' variant="outlined" size="small" color="secondary" className={classes.margin}>
+//                     Add Transaction
+//                 </Button>
+//             </form>
+//         </div>
+//     )
+// }
+
+// export default Form
