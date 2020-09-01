@@ -27,12 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 // type of transactions Obj[]
 type Obj = {
   name: string,
   amount: number,
   id: number,
 }
+
 
 // APP Component
 function App() {
@@ -44,8 +46,9 @@ function App() {
   // form states onchange
   const [usrText, setUsrText] = useState<string>('');
   const [usrAmount, setUsrAmount] = useState<number>(0);
-  const [id, setID] = useState<number>(Math.random());
+  const [id, setID] = useState<number>(Math.floor(Math.random() * 100000000));
 
+  // const [callBack, setCallBack] = useState();
 
   // income expense Calculating
   const amounts = transactions.map((obj: any) => {
@@ -63,6 +66,7 @@ function App() {
     -1
   ).toFixed(2));
 
+
   // Current Balance
   const balance = income - expense;
 
@@ -79,15 +83,25 @@ function App() {
       }
       ]
     )
-
+    setID(Math.floor(Math.random() * 100000000))
     setUsrText('')
-    setUsrAmount(0)
-    setID(Math.random())
+  }
+
+  const deteteTransaction = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const answer: number = Number(e.currentTarget.id)
+    setTransactions((transactions) => (
+      transactions.filter(filterFnc))
+    )
+
+    function filterFnc(obj: Obj) {
+      return obj.id !== answer
+    }
   }
 
 
+  console.log(transactions)
 
-
+  // Return App Component 
   return (
     <div className="App">
       <Grid container spacing={1} className={classes.root} >
@@ -95,7 +109,8 @@ function App() {
           <Header />
           <CurrentBalance balance={balance} />
           <IncomeExpense income={income} expense={expense} />
-          <History transactions={transactions} />
+
+          <History transactions={transactions} callBack={deteteTransaction} />
 
           {/* form */}
           <div className='form-component'>
@@ -104,30 +119,34 @@ function App() {
               onSubmit={submitHandler}
               className='form'>
               <div>
-                <InputLabel >Text
-                    </InputLabel>
-                <Input onChange={(e) => {
-                  setUsrText(e.target.value)
-                }}
+                <InputLabel >
+                  Text
+                </InputLabel>
+                <Input
+                  onChange={(e) => {
+                    setUsrText(e.target.value)
+                  }}
                   type="text"
                   value={usrText}
-                  required />
-              </div>
-
-              <div>
-                <InputLabel>Amount
-                    </InputLabel>
-                <Input onChange={(e) => {
-                  setUsrAmount(Number(e.target.value))
-                }}
-                  type='number'
-                  value={usrAmount}
                   required
                 />
               </div>
-              <Button type='submit' variant="outlined" size="small" color="secondary" className={classes.margin}>
+
+              <div>
+                <InputLabel>
+                  Amount
+                </InputLabel>
+                <Input
+                  onChange={(e) => {
+                    setUsrAmount(Number(e.target.value))
+                  }}
+                  type='number'
+                  required
+                />
+              </div>
+              <Button type='submit' variant="outlined" size="medium" color="secondary" className={classes.margin}>
                 Add Transaction
-                </Button>
+              </Button>
             </form>
           </div>
 

@@ -9,25 +9,6 @@ type Props = {
 const IncomeExpense: React.FC<Props> = ({ income, expense }) => {
 
 
-    // const amounts = transactions.map((obj: any) => {
-    //     return obj.amount
-    // })
-
-    // const income: number = Number(amounts
-    //     .filter((item: number) => item > 0)
-    //     .reduce((acc: number, item: number) => (acc += item), 0)
-    //     .toFixed(2));
-
-    // const expense: number = Number((amounts
-    //     .filter((item: number) => item < 0)
-    //     .reduce((acc: number, item: number) => (acc += item), 0) *
-    //     -1
-    //     ).toFixed(2));
-
-    // console.log('amounts ', typeof (amounts), amounts)
-    // console.log('income ', typeof (income), income)
-    // console.log('expense ', typeof (expense), expense)
-
     return (
         <div className='income-expense'>
             <div className='income'>
@@ -37,7 +18,7 @@ const IncomeExpense: React.FC<Props> = ({ income, expense }) => {
 
             <div className='expense'>
                 <h3>Expense</h3>
-                <p> ${expense} </p>
+                <p> $-{expense} </p>
             </div>
         </div>
     )

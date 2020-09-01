@@ -15,9 +15,10 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
     transactions: any
+    callBack: any
 }
 
-const History: React.FC<Props> = ({ transactions }) => {
+const History: React.FC<Props> = ({ transactions, callBack }) => {
     const classes = useStyles();
 
 
@@ -31,9 +32,9 @@ const History: React.FC<Props> = ({ transactions }) => {
                             <p>${arr.amount}</p>
                             <p>${arr.id}</p>
 
-                            <IconButton aria-label="delete">
+                            <button onClick={callBack} id={arr.id}>
                                 <DeleteIcon />
-                            </IconButton>
+                            </button>
                         </li>
                     )
                 })}
