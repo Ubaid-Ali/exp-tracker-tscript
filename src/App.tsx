@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import { Input } from '@material-ui/core';
 import { InputLabel } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 // import components
 import Header from './Components/Header';
@@ -16,15 +18,27 @@ import History from './Components/History'
 // Styling
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-
+    padding: '0% 5%'
   },
   grid: {
-    flex: 1,
   },
   margin: {
     margin: theme.spacing(1),
   },
+
+  submitPositive: {
+    color: 'green',
+    borderColor: '#52b202',
+    boxShadow: '0 0 5px green',
+    margin: '5%',
+  },
+  submitNegative: {
+    color: 'red',
+    borderColor: '#ab003c',
+    boxShadow: '0 0 5px red',
+    margin: '5%',
+  }
+
 }));
 
 
@@ -48,10 +62,11 @@ function App() {
   const [usrAmount, setUsrAmount] = useState<number>(0);
   const [id, setID] = useState<number>(Math.floor(Math.random() * 100000000));
 
-  // const [callBack, setCallBack] = useState();
+  // Toggle Button state
+  const [checked, setChecked] = useState<boolean>(false);
 
   // income expense Calculating
-  const amounts = transactions.map((obj: any) => {
+  const amounts = transactions.map((obj: Obj) => {
     return obj.amount
   })
 
@@ -68,17 +83,18 @@ function App() {
 
 
   // Current Balance
-  const balance = income - expense;
+  const balance: number = income - expense;
 
 
   // Submit event
   function submitHandler(event: any) {
     event.preventDefault()
+    let convertedInMinus: number = - + usrAmount
     setTransactions(
       [...transactions,
       {
         name: usrText,
-        amount: usrAmount,
+        amount: checked ? convertedInMinus : usrAmount,
         id: id,
       }
       ]
@@ -99,7 +115,11 @@ function App() {
   }
 
 
-  console.log(transactions)
+  const toggleChecked = () => {
+    setChecked((prev) => !prev);
+  };
+
+  // console.log(checked)
 
   // Return App Component 
   return (
@@ -113,13 +133,15 @@ function App() {
           <History transactions={transactions} callBack={deteteTransaction} />
 
           {/* form */}
-          <div className='form-component'>
-            <h2>Add New Transaction</h2>
+          <div className='form'>
+            <h3 className='form-heading' >Add New Transaction</h3>
             <form
               onSubmit={submitHandler}
-              className='form'>
-              <div>
-                <InputLabel >
+              className='form'
+            >
+
+              <div className='input-div'>
+                <InputLabel className='label'>
                   Text
                 </InputLabel>
                 <Input
@@ -129,11 +151,12 @@ function App() {
                   type="text"
                   value={usrText}
                   required
+                  className='input'
                 />
               </div>
 
-              <div>
-                <InputLabel>
+              <div className='input-div'>
+                <InputLabel className='label'>
                   Amount
                 </InputLabel>
                 <Input
@@ -142,9 +165,25 @@ function App() {
                   }}
                   type='number'
                   required
+                  className='input'
                 />
               </div>
-              <Button type='submit' variant="outlined" size="medium" color="secondary" className={classes.margin}>
+
+              {/* Toggle button */}
+              <FormControlLabel
+                control={<Switch checked={checked} onChange={toggleChecked} />}
+                label={checked ? "Negative Amount" : "Positive Amount"}
+                className='toggle-btn'
+              />
+              <br />
+              {/* submit button */}
+              <Button
+                type='submit'
+                variant="outlined"
+                size="medium"
+                className={checked ? classes.submitNegative : classes.submitPositive}
+                id='submit'
+              >
                 Add Transaction
               </Button>
             </form>

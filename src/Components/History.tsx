@@ -2,19 +2,21 @@ import React from 'react'
 import '../App.css'
 
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // '& > *': {
-        //     margin: theme.spacing(1),
-        // },
+        // textAlign: 'center',
     },
 }));
 
 type Props = {
-    transactions: any
+    transactions: {
+        name: string,
+        amount: number,
+        id: number,
+    }[]
     callBack: any
 }
 
@@ -24,16 +26,14 @@ const History: React.FC<Props> = ({ transactions, callBack }) => {
 
     return (
         <div className={classes.root} >
-            <ul >
+            <ul className='history-ul' >
                 {transactions.map((arr: any) => {
                     return (
-                        <li className='history' key={arr.id}>
-                            <p>{arr.name}</p>
-                            <p>${arr.amount}</p>
-                            <p>${arr.id}</p>
-
-                            <button onClick={callBack} id={arr.id}>
-                                <DeleteIcon />
+                        <li className='history-li' key={arr.id}>
+                            <span>{arr.name}</span>
+                            <span>${arr.amount}</span>
+                            <button onClick={callBack} id={arr.id} className='delete-icon-button'>
+                                <DeleteIcon className='delete-icon' />
                             </button>
                         </li>
                     )
