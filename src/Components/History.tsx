@@ -27,12 +27,12 @@ const History: React.FC<Props> = ({ transactions, callBack }) => {
     return (
         <div className={classes.root} >
             <ul className='history-ul' >
-                {transactions.map((arr: any) => {
+                {transactions.map((transObj: any) => {
                     return (
-                        <li className='history-li' key={arr.id}>
-                            <span>{arr.name}</span>
-                            <span>${arr.amount}</span>
-                            <button onClick={callBack} id={arr.id} className='delete-icon-button'>
+                        <li className={transObj.amount > 0 ? 'history-li-green' : 'history-li-red'} key={transObj.id}>
+                            <span>{transObj.name}</span>
+                            <span>${transObj.amount}</span>
+                            <button onClick={callBack} id={transObj.id} className='delete-icon-button'>
                                 <DeleteIcon className='delete-icon' />
                             </button>
                         </li>

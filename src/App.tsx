@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FormHTMLAttributes } from 'react';
 import './App.css';
 // material ui
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +18,7 @@ import History from './Components/History'
 // Styling
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '0% 5%'
+    padding: '0% 1%'
   },
   grid: {
   },
@@ -27,15 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
 
   submitPositive: {
-    color: 'green',
-    borderColor: '#52b202',
-    boxShadow: '0 0 5px green',
+    borderColor: '#green',
+    boxShadow: '0 0 10px green',
     margin: '5%',
   },
   submitNegative: {
-    color: 'red',
     borderColor: '#ab003c',
-    boxShadow: '0 0 5px red',
+    boxShadow: '0 0 10px #ab003c',
     margin: '5%',
   }
 
@@ -89,7 +87,9 @@ function App() {
   // Submit event
   function submitHandler(event: any) {
     event.preventDefault()
-    let convertedInMinus: number = - + usrAmount
+    let convertedInMinus: number = (usrAmount > 0 ? -usrAmount : usrAmount)
+    console.log(convertedInMinus);
+    
     setTransactions(
       [...transactions,
       {
