@@ -141,36 +141,32 @@ function App() {
             >
 
               <div className='input-div'>
-                <label>
-                  <InputLabel className='label'>
-                    Text
+                <InputLabel className='label'>
+                  Text
+                  <Input
+                    onChange={(e) => {
+                      setUsrText(e.target.value)
+                    }}
+                    type="text"
+                    value={usrText}
+                    required
+                    className='input'
+                  />
                 </InputLabel>
-                </label>
-                <Input
-                  onChange={(e) => {
-                    setUsrText(e.target.value)
-                  }}
-                  type="text"
-                  value={usrText}
-                  required
-                  className='input'
-                />
               </div>
 
               <div className='input-div'>
-                <label>
-                  <InputLabel className='label'>
-                    Amount
+                <InputLabel className='label'>
+                  Amount
+                  <Input
+                    onChange={(e) => {
+                      setUsrAmount(Number(e.target.value))
+                    }}
+                    type='number'
+                    required
+                    className='input'
+                  />
                 </InputLabel>
-                </label>
-                <Input
-                  onChange={(e) => {
-                    setUsrAmount(Number(e.target.value))
-                  }}
-                  type='number'
-                  required
-                  className='input'
-                />
               </div>
 
               {/* Toggle button */}
