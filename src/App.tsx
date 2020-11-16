@@ -89,7 +89,7 @@ function App() {
     event.preventDefault()
     let convertedInMinus: number = (usrAmount > 0 ? -usrAmount : usrAmount)
     console.log(convertedInMinus);
-    
+
     setTransactions(
       [...transactions,
       {
@@ -141,9 +141,11 @@ function App() {
             >
 
               <div className='input-div'>
-                <InputLabel className='label'>
-                  Text
+                <label>
+                  <InputLabel className='label'>
+                    Text
                 </InputLabel>
+                </label>
                 <Input
                   onChange={(e) => {
                     setUsrText(e.target.value)
@@ -156,9 +158,11 @@ function App() {
               </div>
 
               <div className='input-div'>
-                <InputLabel className='label'>
-                  Amount
+                <label>
+                  <InputLabel className='label'>
+                    Amount
                 </InputLabel>
+                </label>
                 <Input
                   onChange={(e) => {
                     setUsrAmount(Number(e.target.value))
