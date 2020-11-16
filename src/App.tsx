@@ -127,11 +127,15 @@ function App() {
       <Grid container spacing={1} className={classes.root} >
         <Grid item xs={12} sm={12} className={classes.grid}>
           <Header />
+          <hr/>
+
           <CurrentBalance balance={balance} />
+          <hr/>
+
           <IncomeExpense income={income} expense={expense} />
 
           <History transactions={transactions} callBack={deteteTransaction} />
-
+          <hr/>
           {/* form */}
           <div className='form'>
             <h3 className='form-heading' >Add New Transaction</h3>
@@ -143,6 +147,7 @@ function App() {
               <div className='input-div'>
                 <InputLabel className='label'>
                   Text
+                  <br />
                   <Input
                     onChange={(e) => {
                       setUsrText(e.target.value)
@@ -158,6 +163,7 @@ function App() {
               <div className='input-div'>
                 <InputLabel className='label'>
                   Amount
+                  <br />
                   <Input
                     onChange={(e) => {
                       setUsrAmount(Number(e.target.value))
