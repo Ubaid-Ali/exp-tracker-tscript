@@ -127,8 +127,7 @@ function App() {
       <Grid container spacing={1} className={classes.root} >
         <Grid item xs={12} sm={12} className={classes.grid}>
           <Header />
-          <hr/>
-
+          
           <CurrentBalance balance={balance} />
           <hr/>
 

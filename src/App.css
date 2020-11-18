@@ -1,21 +1,20 @@
 .App {
-  display      : flex;
-  justify-items: center;
-  position     : relative;
-  font-family  : sans-serif;
+  display            : flex;
+  /* justify-items   : center; */
+  /* position        : relative; */
+  font-family        : sans-serif;
 }
 
 .header {
-  font-size  : 150%;
+  font-size  : 27px;
   font-weight: 500;
   text-align : center;
   text-shadow: 0 0 1px rgb(28, 28, 56);
-  margin-top : 5%;
 }
 
 .balance-div {
   border-radius   : 6px;
-  padding         : 1% 5%;
+  padding         : 10px;
   text-align      : center;
   background-color: rgb(28, 28, 56);
 }
@@ -30,37 +29,23 @@
   justify-content: space-between;
   text-align     : center;
   color          : rgb(28, 28, 56);
-  margin: 2px;
+  margin         : 2px;
 }
 
 .income {
-  /* color: green; */
-  /* border-right : 3px solid rgb(28, 28, 56); */
-  border-radius: 5px;
   flex         : 1;
   font-size    : 120%;
-  border-bottom: 3px solid #70ee70;
-  background   : #ffffff;
-  /* fallback for old browsers */
-  background   : -webkit-linear-gradient(to top, #70ee70, #ffffff);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background   : linear-gradient(to top, #80f380, #ffffff);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin: 2px;
+  border-bottom: 5px solid #70ee70;
+  margin       : 5px;
+  box-shadow   : 0 0 5px 0 black;
 }
 
 .expense {
-  border-radius: 5px;
   flex         : 1;
   font-size    : 120%;
-  border-bottom: 3px solid #db5f5d;
-  background   : #F11712;
-  /* fallback for old browsers */
-  background   : -webkit-linear-gradient(to top, #e95452, #ffffff);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background   : linear-gradient(to top, #db5f5d, #ffffff);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin: 2px;
+  border-bottom: 5px solid #db5f5d;
+  margin       : 5px;
+  box-shadow   : 0 0 5px 0 black;
 }
 
 .history-ul {
@@ -71,32 +56,34 @@
 
 .history-li-green,
 .history-li-red {
-  text-shadow    : 0 0 1px rgb(28, 28, 56);
   color          : rgb(28, 28, 56);
-  margin         : 0.8%;
-  padding        : 1.5%;
+  margin         : 8px;
+  padding        : 8px;
   position       : relative;
   display        : flex;
   justify-content: space-around;
   list-style     : none;
   text-align     : left;
   color          : rgb(28, 28, 56);
-  border-radius  : 5px;
+  box-shadow  : 0 0 5px black;
 }
 
 .history-li-green {
-  background: rgb(220, 255, 203);
-  background: linear-gradient(90deg, rgba(220, 255, 203, 1) 8%, rgba(75, 162, 42, 1) 62%, rgba(19, 70, 0, 1) 100%);
+  color       : green;
+  border-left : 5px solid #70ee70;
+  border-right: 5px solid #70ee70;
 }
 
 .history-li-red {
-  background: rgb(255, 203, 203);
-  background: linear-gradient(90deg, rgba(255, 203, 203, 1) 8%, rgba(162, 42, 42, 1) 62%, rgba(70, 1, 0, 1) 100%);
+  color       : red;
+  border-left : 5px solid #db5f5d;
+  border-right: 5px solid #db5f5d;
 }
 
 .history-li-green span,
 .history-li-red span {
-  flex: 1;
+  flex       : 1;
+  text-shadow: 0 0 1px rgb(28, 28, 56);
 }
 
 .delete-icon-button {
@@ -109,7 +96,7 @@
 }
 
 .delete-icon {
-  color: gold;
+  color: rgb(28, 28, 56);
 }
 
 .form {
@@ -119,7 +106,8 @@
 }
 
 .form-heading {
-  text-align: center;
+  text-align     : center;
+  text-decoration: underline;
 }
 
 .input-div {
@@ -144,13 +132,13 @@ input[type="number"] {
 }
 
 .toggle-btn {
-  flex           : 1;
+  /* flex           : 1; */
   justify-content: center;
 }
 
 #submit {
-  margin          : 0% 5% 5% 5%;
-  background-color: rgb(28, 28, 56);
-  font-weight     : bolder;
-  color           : white;
+  margin     : 0px 20px 50px 20px;
+  font-weight: bolder;
+  color      : white;
+  color      : rgb(28, 28, 56);
 }
