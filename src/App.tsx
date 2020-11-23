@@ -15,6 +15,9 @@ import CurrentBalance from './Components/CurrentBalance';
 import IncomeExpense from './Components/IncomeExpense';
 import History from './Components/History'
 
+// import for get token
+import FirebaseToken from './firebase-folder/firebaseToken'; 
+
 // Styling
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,8 +53,11 @@ type Obj = {
 
 // APP Component
 function App() {
-  const classes = useStyles();
 
+  const classes = useStyles();
+  
+  FirebaseToken()
+  
   // transaction list
   const [transactions, setTransactions] = useState<Obj[]>([])
 
